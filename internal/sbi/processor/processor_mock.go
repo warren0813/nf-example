@@ -12,8 +12,8 @@ package processor
 import (
 	reflect "reflect"
 
-	context "github.com/andy89923/nf-example/internal/context"
-	factory "github.com/andy89923/nf-example/pkg/factory"
+	context "github.com/Alonza0314/nf-example/internal/context"
+	factory "github.com/Alonza0314/nf-example/pkg/factory"
 	gomock "go.uber.org/mock/gomock"
 )
 

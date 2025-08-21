@@ -1,8 +1,8 @@
 package app
 
 import (
-	nf_context "github.com/andy89923/nf-example/internal/context"
-	"github.com/andy89923/nf-example/pkg/factory"
+	nf_context "github.com/Alonza0314/nf-example/internal/context"
+	"github.com/Alonza0314/nf-example/pkg/factory"
 )
 
 type App interface {

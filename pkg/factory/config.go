@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/andy89923/nf-example/internal/logger"
+	"github.com/Alonza0314/nf-example/internal/logger"
 	"github.com/asaskevich/govalidator"
 
 	"github.com/free5gc/openapi/models"
@@ -102,7 +102,7 @@ func appendInvalid(err error) error {
 
 	es := err.(govalidator.Errors).Errors()
 	for _, e := range es {
-		errs = append(errs, fmt.Errorf("Invalid %w", e))
+		errs = append(errs, fmt.Errorf("invalid %w", e))
 	}
 
 	return error(errs)

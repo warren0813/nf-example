@@ -1,6 +1,6 @@
 package processor
 
-import "github.com/andy89923/nf-example/pkg/app"
+import "github.com/Alonza0314/nf-example/pkg/app"
 
 type ProcessorNf interface {
 	app.App

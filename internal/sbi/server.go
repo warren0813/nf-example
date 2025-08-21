@@ -7,10 +7,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/andy89923/nf-example/internal/logger"
-	"github.com/andy89923/nf-example/internal/sbi/processor"
-	"github.com/andy89923/nf-example/pkg/app"
-	"github.com/andy89923/nf-example/pkg/factory"
+	"github.com/Alonza0314/nf-example/internal/logger"
+	"github.com/Alonza0314/nf-example/internal/sbi/processor"
+	"github.com/Alonza0314/nf-example/pkg/app"
+	"github.com/Alonza0314/nf-example/pkg/factory"
 	"github.com/gin-gonic/gin"
 )
 

@@ -4,8 +4,8 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	nf_context "github.com/andy89923/nf-example/internal/context"
-	"github.com/andy89923/nf-example/internal/sbi/processor"
+	nf_context "github.com/Alonza0314/nf-example/internal/context"
+	"github.com/Alonza0314/nf-example/internal/sbi/processor"
 	"github.com/gin-gonic/gin"
 	gomock "go.uber.org/mock/gomock"
 )

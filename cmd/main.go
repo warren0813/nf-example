@@ -8,9 +8,9 @@ import (
 	"runtime/debug"
 	"syscall"
 
-	"github.com/andy89923/nf-example/internal/logger"
-	"github.com/andy89923/nf-example/pkg/factory"
-	"github.com/andy89923/nf-example/pkg/service"
+	"github.com/Alonza0314/nf-example/internal/logger"
+	"github.com/Alonza0314/nf-example/pkg/factory"
+	"github.com/Alonza0314/nf-example/pkg/service"
 	"github.com/urfave/cli"
 
 	logger_util "github.com/free5gc/util/logger"

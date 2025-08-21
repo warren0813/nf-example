@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/andy89923/nf-example/internal/logger"
+	"github.com/Alonza0314/nf-example/internal/logger"
 	"github.com/asaskevich/govalidator"
 	"gopkg.in/yaml.v2"
 )

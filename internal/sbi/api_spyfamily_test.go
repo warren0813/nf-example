@@ -5,8 +5,8 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/andy89923/nf-example/internal/sbi"
-	"github.com/andy89923/nf-example/pkg/factory"
+	"github.com/Alonza0314/nf-example/internal/sbi"
+	"github.com/Alonza0314/nf-example/pkg/factory"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/mock/gomock"
 )

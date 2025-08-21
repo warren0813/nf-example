@@ -3,7 +3,7 @@ package sbi
 import (
 	"net/http"
 
-	"github.com/andy89923/nf-example/internal/logger"
+	"github.com/Alonza0314/nf-example/internal/logger"
 	"github.com/gin-gonic/gin"
 )
 

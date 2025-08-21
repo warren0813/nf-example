@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/andy89923/nf-example/internal/logger"
-	"github.com/andy89923/nf-example/pkg/app"
+	"github.com/Alonza0314/nf-example/internal/logger"
+	"github.com/Alonza0314/nf-example/pkg/app"
 	"github.com/gin-gonic/gin"
 
 	"github.com/free5gc/util/httpwrapper"

@@ -3,8 +3,8 @@ package context
 import (
 	"os"
 
-	"github.com/andy89923/nf-example/internal/logger"
-	"github.com/andy89923/nf-example/pkg/factory"
+	"github.com/Alonza0314/nf-example/internal/logger"
+	"github.com/Alonza0314/nf-example/pkg/factory"
 	"github.com/google/uuid"
 
 	"github.com/free5gc/openapi/models"

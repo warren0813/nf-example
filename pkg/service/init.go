@@ -7,12 +7,12 @@ import (
 	"runtime/debug"
 	"sync"
 
-	nf_context "github.com/andy89923/nf-example/internal/context"
-	"github.com/andy89923/nf-example/internal/logger"
-	"github.com/andy89923/nf-example/internal/sbi"
-	"github.com/andy89923/nf-example/internal/sbi/processor"
-	"github.com/andy89923/nf-example/pkg/app"
-	"github.com/andy89923/nf-example/pkg/factory"
+	nf_context "github.com/Alonza0314/nf-example/internal/context"
+	"github.com/Alonza0314/nf-example/internal/logger"
+	"github.com/Alonza0314/nf-example/internal/sbi"
+	"github.com/Alonza0314/nf-example/internal/sbi/processor"
+	"github.com/Alonza0314/nf-example/pkg/app"
+	"github.com/Alonza0314/nf-example/pkg/factory"
 	"github.com/sirupsen/logrus"
 )
 
