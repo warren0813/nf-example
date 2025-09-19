@@ -2,13 +2,18 @@ package context
 
 import (
 	"os"
+	"sync"
 
 	"github.com/Alonza0314/nf-example/internal/logger"
 	"github.com/Alonza0314/nf-example/pkg/factory"
-	"github.com/google/uuid"
-
 	"github.com/free5gc/openapi/models"
+	"github.com/google/uuid"
 )
+
+type Task struct {
+	ID   int    `json:"id"`
+	Name string `json:"name"`
+}
 
 type NFContext struct {
 	NfId        string
@@ -18,6 +23,9 @@ type NFContext struct {
 	SBIPort     int
 
 	SpyFamilyData map[string]string
+	Tasks         []Task
+	TaskMutex     sync.RWMutex
+	NextTaskID    uint64
 }
 
 var nfContext = NFContext{}
@@ -57,6 +65,8 @@ func InitNfContext() {
 		"Henry":  "Henderson",
 		"Martha": "Marriott",
 	}
+	nfContext.Tasks = make([]Task, 0)
+	nfContext.NextTaskID = 0
 }
 
 func GetSelf() *NFContext {
