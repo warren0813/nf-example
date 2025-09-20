@@ -79,6 +79,7 @@ func Test_GetMessageNotEmpty(t *testing.T) {
 		}
 	})
 }
+
 func Test_GetMessageEmpty(t *testing.T) {
 	gin.SetMode(gin.TestMode)
 

@@ -28,10 +28,9 @@ type NFContext struct {
 	MessageRecord []string
 	MessageMu     sync.Mutex
 
-	Tasks         []Task
-	TaskMutex     sync.RWMutex
-	NextTaskID    uint64
-
+	Tasks      []Task
+	TaskMutex  sync.RWMutex
+	NextTaskID uint64
 }
 
 var nfContext = NFContext{}
@@ -76,7 +75,6 @@ func InitNfContext() {
 
 	nfContext.Tasks = make([]Task, 0)
 	nfContext.NextTaskID = 0
-
 }
 
 func GetSelf() *NFContext {

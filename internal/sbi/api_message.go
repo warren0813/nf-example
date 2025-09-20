@@ -44,6 +44,7 @@ func (s *Server) HTTPAddNewMessage(c *gin.Context) {
 	}
 	s.Processor().AddNewMessage(c, newMessage)
 }
+
 func (s *Server) noMessageHandler(c *gin.Context) {
 	c.String(http.StatusBadRequest, "No message provided")
 }

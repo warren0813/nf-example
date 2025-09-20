@@ -14,6 +14,7 @@ func (p *Processor) AddNewMessage(c *gin.Context, newMessage string) {
 	p.Context().MessageRecord = append(p.Context().MessageRecord, newMessage)
 	c.String(http.StatusOK, "add a new message!")
 }
+
 func (p *Processor) GetMessageRecord(c *gin.Context) {
 	p.Context().MessageMu.Lock()
 	defer p.Context().MessageMu.Unlock()
