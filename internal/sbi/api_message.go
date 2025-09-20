@@ -37,7 +37,6 @@ func (s *Server) myPutGetMessageRoute() []Route {
 }
 
 func (s *Server) HTTPAddNewMessage(c *gin.Context) {
-
 	newMessage := c.Param("Message")
 	if newMessage == "" {
 		s.noMessageHandler(c)

@@ -33,7 +33,7 @@ func Test_AddNewMessage(t *testing.T) {
 		httpRecorder := httptest.NewRecorder()
 		ginCtx, _ := gin.CreateTestContext(httpRecorder)
 		processor.AddNewMessage(ginCtx, INPUT_MESSAGE)
-		
+
 		if httpRecorder.Code != EXPECTED_STATUS {
 			t.Errorf("Expected status code %d, got %d", EXPECTED_STATUS, httpRecorder.Code)
 		}
@@ -69,7 +69,7 @@ func Test_GetMessageNotEmpty(t *testing.T) {
 		httpRecorder := httptest.NewRecorder()
 		ginCtx, _ := gin.CreateTestContext(httpRecorder)
 		processor.GetMessageRecord(ginCtx)
-		
+
 		if httpRecorder.Code != EXPECTED_STATUS {
 			t.Errorf("Expected status code %d, got %d", EXPECTED_STATUS, httpRecorder.Code)
 		}
@@ -100,7 +100,7 @@ func Test_GetMessageEmpty(t *testing.T) {
 		httpRecorder := httptest.NewRecorder()
 		ginCtx, _ := gin.CreateTestContext(httpRecorder)
 		processor.GetMessageRecord(ginCtx)
-		
+
 		if httpRecorder.Code != EXPECTED_STATUS {
 			t.Errorf("Expected status code %d, got %d", EXPECTED_STATUS, httpRecorder.Code)
 		}
