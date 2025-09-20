@@ -6,8 +6,9 @@ import (
 
 	"github.com/Alonza0314/nf-example/internal/logger"
 	"github.com/Alonza0314/nf-example/pkg/factory"
-	"github.com/free5gc/openapi/models"
 	"github.com/google/uuid"
+
+	"github.com/free5gc/openapi/models"
 )
 
 type Task struct {

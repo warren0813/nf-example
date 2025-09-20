@@ -38,8 +38,8 @@ func Test_TaskHandlers(t *testing.T) {
 		ginCtx, _ := gin.CreateTestContext(httpRecorder)
 
 		taskData := map[string]string{"name": "Test Task"}
-
-		body, err := json.Marshal(taskData)
+		var body []byte
+		body, err = json.Marshal(taskData)
 		assert.NoError(t, err)
 
 		ginCtx.Request, err = http.NewRequest(http.MethodPost, "/task/tasks", bytes.NewReader(body))

@@ -3,7 +3,6 @@ module github.com/Alonza0314/nf-example
 go 1.24
 
 require (
-	github.com/andy89923/nf-example v0.0.0-20240927075836-30d774dac5e6
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2
 	github.com/free5gc/openapi v1.2.0
 	github.com/free5gc/util v1.1.1
