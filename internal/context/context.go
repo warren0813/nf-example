@@ -24,9 +24,13 @@ type NFContext struct {
 	SBIPort     int
 
 	SpyFamilyData map[string]string
-	Tasks         []Task
-	TaskMutex     sync.RWMutex
-	NextTaskID    uint64
+
+	MessageRecord []string
+	MessageMu     sync.Mutex
+
+	Tasks      []Task
+	TaskMutex  sync.RWMutex
+	NextTaskID uint64
 }
 
 var nfContext = NFContext{}
@@ -66,6 +70,9 @@ func InitNfContext() {
 		"Henry":  "Henderson",
 		"Martha": "Marriott",
 	}
+
+	nfContext.MessageRecord = []string{}
+
 	nfContext.Tasks = make([]Task, 0)
 	nfContext.NextTaskID = 0
 }

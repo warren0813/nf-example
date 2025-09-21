@@ -42,6 +42,9 @@ func newRouter(s *Server) *gin.Engine {
 	defaultGroup := router.Group("/default")
 	applyRoutes(defaultGroup, s.getDefaultRoute())
 
+	myPutGetMessageGroup := router.Group("/message")
+	applyRoutes(myPutGetMessageGroup, s.myPutGetMessageRoute())
+
 	spyFamilyGroup := router.Group("/spyfamily")
 	applyRoutes(spyFamilyGroup, s.getSpyFamilyRoute())
 
