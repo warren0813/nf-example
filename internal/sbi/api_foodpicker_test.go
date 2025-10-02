@@ -54,7 +54,7 @@ func Test_FoodPickerGET(t *testing.T) {
 	}
 
 	var body map[string]string
-	if err := json.Unmarshal(httpRecorder.Body.Bytes(), &body); err != nil {
+	if err = json.Unmarshal(httpRecorder.Body.Bytes(), &body); err != nil {
 		t.Errorf("Failed to parse response JSON: %v", err)
 	}
 
@@ -70,7 +70,10 @@ func Test_FoodPickerPOST(t *testing.T) {
 	ginCtx, _ := gin.CreateTestContext(httpRecorder)
 
 	payload := map[string]string{"name": "Sushi"}
-	jsonData, _ := json.Marshal(payload)
+	jsonData, err := json.Marshal(payload)
+	if err != nil {
+		t.Fatalf("Failed to marshal payload: %v", err)
+	}
 
 	req, err := http.NewRequest(http.MethodPost, "/foodpicker", bytes.NewBuffer(jsonData))
 	if err != nil {
@@ -91,7 +94,7 @@ func Test_FoodPickerPOST(t *testing.T) {
 	}
 
 	var resp map[string]interface{}
-	if err := json.Unmarshal(httpRecorder.Body.Bytes(), &resp); err != nil {
+	if err = json.Unmarshal(httpRecorder.Body.Bytes(), &resp); err != nil {
 		t.Errorf("Failed to parse response JSON: %v", err)
 	}
 

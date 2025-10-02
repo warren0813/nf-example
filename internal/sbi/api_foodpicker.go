@@ -4,7 +4,6 @@ import (
 	"math/rand"
 	"net/http"
 	"sync"
-	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -24,11 +23,10 @@ func (s *Server) getFoodPickerRoutes() []Route {
 				mu.Lock()
 				defer mu.Unlock()
 
-				rand.Seed(time.Now().UnixNano())
 				randomFood := foodList[rand.Intn(len(foodList))]
 				c.JSON(http.StatusOK, gin.H{"lunch/dinner pick": randomFood})
 			},
-			// curl -X GET http://127.0.0.1:8000/foodpicker -w "\n"
+			// curl -X GET http://127.0.0.163:8000/foodpicker -w "\n"
 		},
 		{
 			Name:    "FoodPicker POST",
@@ -49,7 +47,9 @@ func (s *Server) getFoodPickerRoutes() []Route {
 				foodList = append(foodList, newFood.Name)
 				c.JSON(http.StatusOK, gin.H{"message": "Food added successfully", "foodList": foodList})
 			},
-			// curl -X POST http://127.0.0.1:8000/foodpicker -H "Content-Type: application/json" -d '{"name":"McDonalds"}' -w "\n"
+			// curl -X POST http://127.0.0.163:8000/foodpicker \
+			//   -H "Content-Type: application/json" \
+			//   -d '{"name":"McDonalds"}' -w "\n"
 		},
 	}
 }
