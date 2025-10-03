@@ -4,12 +4,11 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/Alonza0314/nf-example/internal/logger"
+	"github.com/Alonza0314/nf-example/pkg/app"
 	"github.com/free5gc/util/httpwrapper"
 	logger_util "github.com/free5gc/util/logger"
 	"github.com/gin-gonic/gin"
-
-	"github.com/Alonza0314/nf-example/internal/logger"
-	"github.com/Alonza0314/nf-example/pkg/app"
 )
 
 type Route struct {
