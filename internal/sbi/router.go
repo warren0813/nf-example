@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/Alonza0314/nf-example/internal/logger"
-	"github.com/Alonza0314/nf-example/pkg/app"
-	"github.com/gin-gonic/gin"
-
 	"github.com/free5gc/util/httpwrapper"
 	logger_util "github.com/free5gc/util/logger"
+	"github.com/gin-gonic/gin"
+
+	"github.com/Alonza0314/nf-example/internal/logger"
+	"github.com/Alonza0314/nf-example/pkg/app"
 )
 
 type Route struct {
@@ -48,9 +48,9 @@ func newRouter(s *Server) *gin.Engine {
 	spyFamilyGroup := router.Group("/spyfamily")
 	applyRoutes(spyFamilyGroup, s.getSpyFamilyRoute())
 
-	foodPickerGroup := router.Group("/foodpicker")
+	foodPickerGroup := router.Group("/foodpicker") // lab6
 	applyRoutes(foodPickerGroup, s.getFoodPickerRoutes())
-  
+
 	taskGroup := router.Group("/task")
 	applyRoutes(taskGroup, s.getTaskRoute())
 
