@@ -13,22 +13,22 @@ import (
 )
 
 // go test will automatically run any function with a name beginning with "Test"
-//
-//nolint:dupl
-func Test_HTTPSearchDragonBallCharacter(t *testing.T) {
+
+func setupTestServer() *sbi.Server {
 	gin.SetMode(gin.TestMode)
-	mockCtrl := gomock.NewController(t)
-	// Create a mock
+	mockCtrl := gomock.NewController(nil)
 	nfApp := sbi.NewMocknfApp(mockCtrl)
-	// Set up expected return values, and can be called any number of times
 	nfApp.EXPECT().Config().Return(&factory.Config{
 		Configuration: &factory.Configuration{
-			Sbi: &factory.Sbi{
-				Port: 8000,
-			},
+			Sbi: &factory.Sbi{Port: 8000},
 		},
 	}).AnyTimes()
 	server := sbi.NewServer(nfApp, "")
+	return server
+}
+
+func Test_HTTPSearchDragonBallCharacter(t *testing.T) {
+	server := setupTestServer()
 
 	t.Run("No name provided", func(t *testing.T) {
 		const EXPECTED_STATUS = http.StatusBadRequest
@@ -56,18 +56,8 @@ func Test_HTTPSearchDragonBallCharacter(t *testing.T) {
 	})
 }
 
-//nolint:dupl
 func Test_HTTPDragonBallFight(t *testing.T) {
-	gin.SetMode(gin.TestMode)
-
-	mockCtrl := gomock.NewController(t)
-	nfApp := sbi.NewMocknfApp(mockCtrl)
-	nfApp.EXPECT().Config().Return(&factory.Config{
-		Configuration: &factory.Configuration{
-			Sbi: &factory.Sbi{Port: 8000},
-		},
-	}).AnyTimes()
-	server := sbi.NewServer(nfApp, "")
+	server := setupTestServer()
 
 	// define test cases
 	tests := []struct {
@@ -123,7 +113,6 @@ func Test_HTTPDragonBallFight(t *testing.T) {
 	}
 }
 
-//nolint:dupl
 func Test_HTTPAddDragonBallCharacter(t *testing.T) {
 	gin.SetMode(gin.TestMode)
 
@@ -191,16 +180,7 @@ func Test_HTTPAddDragonBallCharacter(t *testing.T) {
 }
 
 func Test_HTTPUpdateDragonBallCharacter(t *testing.T) {
-	gin.SetMode(gin.TestMode)
-
-	mockCtrl := gomock.NewController(t)
-	nfApp := sbi.NewMocknfApp(mockCtrl)
-	nfApp.EXPECT().Config().Return(&factory.Config{
-		Configuration: &factory.Configuration{
-			Sbi: &factory.Sbi{Port: 8000},
-		},
-	}).AnyTimes()
-	server := sbi.NewServer(nfApp, "")
+	server := setupTestServer()
 
 	// define test cases
 	tests := []struct {
