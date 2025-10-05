@@ -32,7 +32,8 @@ type NFContext struct {
 	TaskMutex  sync.RWMutex
 	NextTaskID uint64
 
-	Messages []Message
+	Messages       []Message
+	DragonBallData map[string]int32
 }
 
 type Message struct {
@@ -86,6 +87,16 @@ func InitNfContext() {
 	nfContext.NextTaskID = 0
 
 	nfContext.Messages = make([]Message, 0)
+
+	nfContext.DragonBallData = map[string]int32{
+		"Goku":    7,
+		"Vegeta":  6,
+		"Gohan":   5,
+		"Trunks":  4,
+		"Piccolo": 3,
+		"Krillin": 2,
+		"Yamcha":  1,
+	}
 }
 
 func GetSelf() *NFContext {
