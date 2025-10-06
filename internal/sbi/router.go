@@ -49,9 +49,6 @@ func newRouter(s *Server) *gin.Engine {
 	spyFamilyGroup := router.Group("/spyfamily")
 	applyRoutes(spyFamilyGroup, s.getSpyFamilyRoute())
 
-	foodPickerGroup := router.Group("/foodpicker") // lab6
-	applyRoutes(foodPickerGroup, s.getFoodPickerRoutes())
-
 	taskGroup := router.Group("/task")
 	applyRoutes(taskGroup, s.getTaskRoute())
 
@@ -60,6 +57,9 @@ func newRouter(s *Server) *gin.Engine {
 
 	dragonBallGroup := router.Group("/dragonball")
 	applyRoutes(dragonBallGroup, s.getDragonBallRoute())
+
+	fortuneGroup := router.Group("/fortune")
+	applyRoutes(fortuneGroup, s.getFortuneRoute())
 
 	return router
 }

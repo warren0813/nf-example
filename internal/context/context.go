@@ -34,6 +34,9 @@ type NFContext struct {
 
 	Messages       []Message
 	DragonBallData map[string]int32
+
+	Fortunes     []string
+	FortuneMutex sync.RWMutex
 }
 
 type Message struct {
@@ -96,6 +99,16 @@ func InitNfContext() {
 		"Piccolo": 3,
 		"Krillin": 2,
 		"Yamcha":  1,
+	}
+
+	nfContext.Fortunes = []string{
+		"大吉: All your endeavors will be successful.",
+		"中吉: You will have good luck, but be cautious.",
+		"小吉: A small amount of luck is coming your way.",
+		"吉: Good fortune is with you.",
+		"末吉: Your luck is gradually improving.",
+		"凶: Be careful, misfortune may be ahead.",
+		"大凶: A great misfortune is coming. Be prepared.",
 	}
 }
 
