@@ -62,7 +62,7 @@ func newRouter(s *Server) *gin.Engine {
 	applyRoutes(fortuneGroup, s.getFortuneRoute())
 
 	timeZoneGroup := router.Group("/timezone")
-    applyRoutes(timeZoneGroup, s.getTimeZoneRoute())
+	applyRoutes(timeZoneGroup, s.getTimeZoneRoute())
 
 	return router
 }

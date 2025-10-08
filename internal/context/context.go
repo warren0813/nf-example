@@ -38,7 +38,7 @@ type NFContext struct {
 	Fortunes     []string
 	FortuneMutex sync.RWMutex
 
-	TimeZoneData  map[string]string
+	TimeZoneData map[string]string
 }
 
 type Message struct {
@@ -114,17 +114,17 @@ func InitNfContext() {
 	}
 
 	nfContext.TimeZoneData = map[string]string{
-        "Taipei":  "UTC+8",
-        "Tokyo":   "UTC+9",
+		"Taipei":  "UTC+8",
+		"Tokyo":   "UTC+9",
 		"Seoul":   "UTC+9",
-        "NewYork": "UTC-5",
+		"NewYork": "UTC-5",
 		"Paris":   "UTC+2",
 		"London":  "UTC+1",
 		"Berlin":  "UTC+2",
 		"Sydney":  "UTC+10",
 		"Moscow":  "UTC+3",
 		"Dubai":   "UTC+4",
-    }
+	}
 }
 
 func GetSelf() *NFContext {

@@ -2,6 +2,7 @@ package sbi_test
 
 import (
 	"bytes"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -27,6 +28,36 @@ func setupTimeZoneTestServer(t *testing.T) *sbi.Server {
 	return sbi.NewServer(nfApp, "")
 }
 
+func createJSONRequest(
+	t *testing.T,
+	method, url string,
+	jsonBody string,
+	params gin.Params,
+) (*httptest.ResponseRecorder, *gin.Context) {
+	httpRecorder := httptest.NewRecorder()
+	ginCtx, _ := gin.CreateTestContext(httpRecorder)
+	if params != nil {
+		ginCtx.Params = params
+	}
+
+	var body io.Reader
+	if jsonBody != "" {
+		body = bytes.NewBufferString(jsonBody)
+	}
+
+	var err error
+	ginCtx.Request, err = http.NewRequest(method, url, body)
+	if err != nil {
+		t.Errorf("Failed to create request: %s", err)
+		return nil, nil
+	}
+	if jsonBody != "" {
+		ginCtx.Request.Header.Set("Content-Type", "application/json")
+	}
+
+	return httpRecorder, ginCtx
+}
+
 func Test_HTTPGetTimeZoneByCity(t *testing.T) {
 	server := setupTimeZoneTestServer(t)
 
@@ -34,13 +65,8 @@ func Test_HTTPGetTimeZoneByCity(t *testing.T) {
 		const EXPECTED_STATUS = http.StatusBadRequest
 		const EXPECTED_BODY = "No city provided"
 
-		httpRecorder := httptest.NewRecorder()
-		ginCtx, _ := gin.CreateTestContext(httpRecorder)
-
-		var err error
-		ginCtx.Request, err = http.NewRequest("GET", "/timezone/city/", nil)
-		if err != nil {
-			t.Errorf("Failed to create request: %s", err)
+		httpRecorder, ginCtx := createJSONRequest(t, "GET", "/timezone/city/", "", nil)
+		if ginCtx == nil {
 			return
 		}
 
@@ -148,18 +174,11 @@ func Test_HTTPResetCityTimeZone(t *testing.T) {
 		const EXPECTED_STATUS = http.StatusBadRequest
 		const EXPECTED_BODY = "Invalid JSON format, expected object with TimeZone field"
 
-		httpRecorder := httptest.NewRecorder()
-		ginCtx, _ := gin.CreateTestContext(httpRecorder)
-		ginCtx.Params = gin.Params{gin.Param{Key: "City", Value: "Taipei"}}
-
-		invalidJSON := bytes.NewBufferString("{invalid json}")
-		var err error
-		ginCtx.Request, err = http.NewRequest("POST", "/timezone/city/Taipei", invalidJSON)
-		if err != nil {
-			t.Errorf("Failed to create request: %s", err)
+		httpRecorder, ginCtx := createJSONRequest(t, "POST", "/timezone/city/Taipei",
+			"{invalid json}", gin.Params{gin.Param{Key: "City", Value: "Taipei"}})
+		if ginCtx == nil {
 			return
 		}
-		ginCtx.Request.Header.Set("Content-Type", "application/json")
 
 		server.HTTPResetCityTimeZone(ginCtx)
 
@@ -176,18 +195,11 @@ func Test_HTTPResetCityTimeZone(t *testing.T) {
 		const EXPECTED_STATUS = http.StatusBadRequest
 		const EXPECTED_BODY = "TimeZone field is required"
 
-		httpRecorder := httptest.NewRecorder()
-		ginCtx, _ := gin.CreateTestContext(httpRecorder)
-		ginCtx.Params = gin.Params{gin.Param{Key: "City", Value: "Taipei"}}
-
-		emptyJSON := bytes.NewBufferString(`{"TimeZone": ""}`)
-		var err error
-		ginCtx.Request, err = http.NewRequest("POST", "/timezone/city/Taipei", emptyJSON)
-		if err != nil {
-			t.Errorf("Failed to create request: %s", err)
+		httpRecorder, ginCtx := createJSONRequest(t, "POST", "/timezone/city/Taipei",
+			`{"TimeZone": ""}`, gin.Params{gin.Param{Key: "City", Value: "Taipei"}})
+		if ginCtx == nil {
 			return
 		}
-		ginCtx.Request.Header.Set("Content-Type", "application/json")
 
 		server.HTTPResetCityTimeZone(ginCtx)
 
