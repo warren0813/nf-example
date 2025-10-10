@@ -37,6 +37,8 @@ type NFContext struct {
 
 	Fortunes     []string
 	FortuneMutex sync.RWMutex
+
+	TimeZoneData map[string]string
 }
 
 type Message struct {
@@ -109,6 +111,19 @@ func InitNfContext() {
 		"末吉: Your luck is gradually improving.",
 		"凶: Be careful, misfortune may be ahead.",
 		"大凶: A great misfortune is coming. Be prepared.",
+	}
+
+	nfContext.TimeZoneData = map[string]string{
+		"Taipei":  "UTC+8",
+		"Tokyo":   "UTC+9",
+		"Seoul":   "UTC+9",
+		"NewYork": "UTC-5",
+		"Paris":   "UTC+2",
+		"London":  "UTC+1",
+		"Berlin":  "UTC+2",
+		"Sydney":  "UTC+10",
+		"Moscow":  "UTC+3",
+		"Dubai":   "UTC+4",
 	}
 }
 
