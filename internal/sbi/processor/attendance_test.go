@@ -65,7 +65,6 @@ func Test_PostAttandence(t *testing.T) {
 	mockCtrl := gomock.NewController(t)
 	processorNf := processor.NewMockProcessorNf(mockCtrl)
 	processor, err := processor.NewProcessor(processorNf)
-
 	if err != nil {
 		t.Errorf("Failed to create processor: %s", err)
 		return

@@ -1,9 +1,8 @@
 package sbi
 
 import (
-	"net/http"
-
 	"io"
+	"net/http"
 
 	"github.com/Alonza0314/nf-example/internal/logger"
 	"github.com/gin-gonic/gin"

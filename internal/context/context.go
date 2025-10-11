@@ -24,7 +24,6 @@ type NFContext struct {
 	SBIPort     int
 
 	SpyFamilyData map[string]string
-	AttendanceData []string
 
 	MessageRecord []string
 	MessageMu     sync.Mutex
@@ -38,6 +37,8 @@ type NFContext struct {
 
 	Fortunes     []string
 	FortuneMutex sync.RWMutex
+
+	AttendanceData []string
 }
 
 type Message struct {
