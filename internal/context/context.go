@@ -39,7 +39,7 @@ type NFContext struct {
 	FortuneMutex sync.RWMutex
 
 	AttendanceData []string
- 
+
 	TimeZoneData map[string]string
 }
 
