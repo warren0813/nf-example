@@ -38,6 +38,8 @@ type NFContext struct {
 	Fortunes     []string
 	FortuneMutex sync.RWMutex
 
+	AttendanceData []string
+
 	TimeZoneData map[string]string
 }
 
@@ -85,6 +87,7 @@ func InitNfContext() {
 		"Henry":  "Henderson",
 		"Martha": "Marriott",
 	}
+	nfContext.AttendanceData = []string{}
 
 	nfContext.MessageRecord = []string{}
 
