@@ -43,7 +43,7 @@ func Test_HTTPOnePieceGreeting(t *testing.T) {
 	}
 
 	var actual string
-	if err := json.Unmarshal(recorder.Body.Bytes(), &actual); err != nil {
+	if err = json.Unmarshal(recorder.Body.Bytes(), &actual); err != nil {
 		t.Fatalf("decode response: %v", err)
 	}
 	const expected = "Hello Straw Hat Pirates!"
@@ -73,7 +73,7 @@ func Test_HTTPOnePieceRecruit(t *testing.T) {
 		}
 
 		var actual string
-		if err := json.Unmarshal(recorder.Body.Bytes(), &actual); err != nil {
+		if err = json.Unmarshal(recorder.Body.Bytes(), &actual); err != nil {
 			t.Fatalf("decode response: %v", err)
 		}
 		const expected = "Jinbe has joined the Straw Hat crew!"
@@ -100,7 +100,7 @@ func Test_HTTPOnePieceRecruit(t *testing.T) {
 		}
 
 		var payload map[string]string
-		if err := json.Unmarshal(recorder.Body.Bytes(), &payload); err != nil {
+		if err = json.Unmarshal(recorder.Body.Bytes(), &payload); err != nil {
 			t.Fatalf("decode error response: %v", err)
 		}
 		const expected = "name is required"
